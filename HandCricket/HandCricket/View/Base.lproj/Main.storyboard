@@ -298,6 +298,7 @@
                             <constraint firstItem="sv3-7a-5Qc" firstAttribute="leading" secondItem="T2M-ed-37v" secondAttribute="leading" constant="20" id="yLz-bJ-LiF"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Isl-A8-kUB"/>
                     <connections>
                         <outlet property="bastmenName" destination="LBw-r0-e5Q" id="18E-bF-1En"/>
                         <outlet property="computerThrowsLabel" destination="Bhe-HK-Lmw" id="Rxm-V9-uFL"/>
@@ -309,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="StG-19-2Cg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1842.0289855072465" y="109.15178571428571"/>
+            <point key="canvasLocation" x="1771" y="115"/>
         </scene>
         <!--Result View Controller-->
         <scene sceneID="c3W-YW-Zlm">
@@ -362,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KED-OT-9pg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2566.666666666667" y="108.48214285714285"/>
+            <point key="canvasLocation" x="2455" y="115"/>
         </scene>
     </scenes>
     <resources>

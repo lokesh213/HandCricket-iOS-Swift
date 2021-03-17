@@ -26,12 +26,11 @@ class ScoreBoardViewController: UIViewController {
         super.viewDidLoad()
         setupInterface()
         setupScoreBoardUI()
-        print("Round 1: User Batting")
+        print("Round 1: User is Batting")
     }
     
     private func setupInterface() {
         self.title = "Score Board"
-        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     private func setupScoreBoardUI() {
@@ -59,12 +58,7 @@ class ScoreBoardViewController: UIViewController {
         if let computerThrow = handCricketManager.getComputerRandomThrows() {
             compThrow = computerThrow
             if userThrow == computerThrow {
-                //User Throw and Computer Throw are equal to each other
-                if isRoundOne {
-                    roundOneCompleted(status: .out)
-                } else if isRoundTwo {
-                    roundTwoCompleted(status: .out)
-                }
+                userOrComputerIsOut(userThrow, compThrow)
                 return
             } else {
                 //Save User Throw and Computer Throw. When there are not equal to each other
@@ -84,22 +78,32 @@ class ScoreBoardViewController: UIViewController {
         
         if throwsCount == 6 {
             //Stop Rounds after 6 throws
-            roundsAreCompleted()
+            throwsAreCompleted()
         }
-        
     }
     
     private func saveUserAndComputerThrows(_ userThrow: Int, _ computerThrow: Int) {
-        printLogs(userThrow, computerThrow)
         handCricketManager.saveUserThrows(userThrow)
         handCricketManager.saveComputerThrows(computerThrow)
+        printLogs(userThrow, computerThrow)
     }
     
-    private func roundsAreCompleted() {
+    private func throwsAreCompleted() {
         if isRoundOne {
             roundOneCompleted(status: .throwsCompleted);
         } else if isRoundTwo {
             roundTwoCompleted(status: .throwsCompleted);
+        }
+    }
+    
+    private func userOrComputerIsOut(_ userThrow: Int, _ computerThrow: Int) {
+        //User Throw and Computer Throw are equal to each other
+        if isRoundOne {
+            print("User throws \(userThrow), Computer throws \(computerThrow), User is Out")
+            roundOneCompleted(status: .out)
+        } else if isRoundTwo {
+            print("User throws \(userThrow), Computer throws \(computerThrow), Computer is Out")
+            roundTwoCompleted(status: .out)
         }
     }
     
@@ -108,10 +112,8 @@ class ScoreBoardViewController: UIViewController {
         isRoundOne = false
         
         if status == .throwsCompleted {
-            print("User throw is completed")
-            UIUtility.showAlertWithTitle(title: "User", message: "Completed Batting", buttonTitles: ["OK"], viewController: self) { (_) in }
+            UIUtility.showAlertWithTitle(title: "User", message: "Batting is Completed", buttonTitles: ["OK"], viewController: self) { (_) in }
         } else if status == .out {
-            print("User is out")
             UIUtility.showAlertWithTitle(title: "User", message: "OUT", buttonTitles: ["OK"], viewController: self) { (_) in }
         }
         
@@ -131,21 +133,19 @@ class ScoreBoardViewController: UIViewController {
         
         //Round 2 started
         isRoundTwo = true
-        print("Round 2: Computer Batting")
+        print("Round 2: Computer is Batting")
         
     }
     
     private func roundTwoCompleted(status: ComputerThrowsResult) {
         switch status {
         case .throwsCompleted:
-            print("Computer throw is completed")
-            UIUtility.showAlertWithTitle(title: "Computer", message: "Completed Batting", buttonTitles: ["OK"], viewController: self) { (title) in
+            UIUtility.showAlertWithTitle(title: "Computer", message: "Batting is Completed", buttonTitles: ["OK"], viewController: self) { (title) in
                 if title == 0 {
                     self.redirectResultViewCntl()
                 }
             }
         case .out:
-            print("Computer is out")
             UIUtility.showAlertWithTitle(title: "Computer", message: "OUT", buttonTitles: ["OK"], viewController: self) { (title) in
                 if title == 0 {
                     self.redirectResultViewCntl()
@@ -153,7 +153,6 @@ class ScoreBoardViewController: UIViewController {
                 
             }
         case .won:
-            print("Computer won")
             UIUtility.showAlertWithTitle(title: "Computer", message: "Won the Hand cricket", buttonTitles: ["OK"], viewController: self) { (title) in
                 if title == 0 {
                     self.redirectResultViewCntl()
