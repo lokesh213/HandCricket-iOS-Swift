@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CF08255326030E9F0060C277 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF08255226030E9F0060C277 /* Localizable.strings */; };
 		CF7A88FE2601F7B6006AA602 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A88FD2601F7B6006AA602 /* AppDelegate.swift */; };
 		CF7A89002601F7B6006AA602 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A88FF2601F7B6006AA602 /* SceneDelegate.swift */; };
 		CF7A89052601F7B6006AA602 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CF7A89032601F7B6006AA602 /* Main.storyboard */; };
@@ -17,12 +18,12 @@
 		CF7A891E2601F897006AA602 /* HandCricketModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A891D2601F897006AA602 /* HandCricketModel.swift */; };
 		CF7A89212601F8B0006AA602 /* HandCricketManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A89202601F8B0006AA602 /* HandCricketManager.swift */; };
 		CF7A892E2601FCF2006AA602 /* AppConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A892D2601FCF2006AA602 /* AppConstant.swift */; };
-		CF7A89332601FD63006AA602 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CF7A89322601FD63006AA602 /* Localizable.strings */; };
 		CF7A8939260265E3006AA602 /* UIUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A8938260265E3006AA602 /* UIUtility.swift */; };
 		CF7A893D260273C2006AA602 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF7A893C260273C2006AA602 /* ResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CF08255226030E9F0060C277 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CF7A88FA2601F7B6006AA602 /* HandCricket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HandCricket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7A88FD2601F7B6006AA602 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CF7A88FF2601F7B6006AA602 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,7 +36,6 @@
 		CF7A891D2601F897006AA602 /* HandCricketModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandCricketModel.swift; sourceTree = "<group>"; };
 		CF7A89202601F8B0006AA602 /* HandCricketManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandCricketManager.swift; sourceTree = "<group>"; };
 		CF7A892D2601FCF2006AA602 /* AppConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstant.swift; sourceTree = "<group>"; };
-		CF7A89322601FD63006AA602 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		CF7A8938260265E3006AA602 /* UIUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIUtility.swift; sourceTree = "<group>"; };
 		CF7A893C260273C2006AA602 /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -51,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CF08255126030E780060C277 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				CF08255226030E9F0060C277 /* Localizable.strings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
 		CF7A88F12601F7B6006AA602 = {
 			isa = PBXGroup;
 			children = (
@@ -94,9 +102,9 @@
 		CF7A89132601F7E0006AA602 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CF7A893B260273A1006AA602 /* Result */,
-				CF7A89252601F8C8006AA602 /* ScoreBoard */,
 				CF7A89242601F8C0006AA602 /* Toss */,
+				CF7A89252601F8C8006AA602 /* ScoreBoard */,
+				CF7A893B260273A1006AA602 /* Result */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -137,7 +145,6 @@
 		CF7A89282601FBB7006AA602 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				CF7A89312601FD30006AA602 /* Localizable */,
 				CF7A892C2601FCCA006AA602 /* Constants */,
 				CF7A892A2601FC33006AA602 /* Utility */,
 			);
@@ -147,6 +154,7 @@
 		CF7A892A2601FC33006AA602 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				CF08255126030E780060C277 /* Localizable */,
 				CF7A892B2601FC5C006AA602 /* UIUtility */,
 			);
 			path = Utility;
@@ -166,14 +174,6 @@
 				CF7A892D2601FCF2006AA602 /* AppConstant.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		CF7A89312601FD30006AA602 /* Localizable */ = {
-			isa = PBXGroup;
-			children = (
-				CF7A89322601FD63006AA602 /* Localizable.strings */,
-			);
-			path = Localizable;
 			sourceTree = "<group>";
 		};
 		CF7A893B260273A1006AA602 /* Result */ = {
@@ -242,7 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF7A890A2601F7B8006AA602 /* LaunchScreen.storyboard in Resources */,
-				CF7A89332601FD63006AA602 /* Localizable.strings in Resources */,
+				CF08255326030E9F0060C277 /* Localizable.strings in Resources */,
 				CF7A89072601F7B8006AA602 /* Assets.xcassets in Resources */,
 				CF7A89052601F7B6006AA602 /* Main.storyboard in Resources */,
 			);

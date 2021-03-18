@@ -34,7 +34,7 @@ class ScoreBoardViewController: UIViewController {
     }
     
     private func setupScoreBoardUI() {
-        bastmenName.text = isRoundOne ? USER_THROWING : COMPUTER_THROWING
+        bastmenName.text = isRoundOne ? localize(key: "USER_THROWING") : localize(key: "COMPUTER_THROWING") 
         bastmenName.adjustsFontSizeToFitWidth = true
         
         let userScore = "Score: \(handCricketManager.getUserScore())"
@@ -57,20 +57,23 @@ class ScoreBoardViewController: UIViewController {
         
         if let computerThrow = handCricketManager.getComputerRandomThrows() {
             compThrow = computerThrow
-            if userThrow == computerThrow {
+            let isOut = handCricketManager.checkUserOrComputerIsOut(userThrow, computerThrow)
+            if isOut {
                 userOrComputerIsOut(userThrow, compThrow)
                 return
             } else {
-                //Save User Throw and Computer Throw. When there are not equal to each other
-                saveUserAndComputerThrows(userThrow, compThrow)
+                //Add this line to print logs as per assignment work
+                printLogs(userThrow, computerThrow)
             }
+        } else {
+            //Error Log
+            print("Computer throws Invalid Number")
         }
         
         if isRoundTwo {
             //This is condition to check whether Computer Throw is greater than User Throw
-            let target = handCricketManager.getTarget()
-            let currentComputerScore = handCricketManager.getComputerScore()
-            if currentComputerScore > target {
+            let isComputerWon = handCricketManager.checkComputerWonTheMatch()
+            if isComputerWon {
                 roundTwoCompleted(status: .won)
             }
         }
@@ -80,12 +83,6 @@ class ScoreBoardViewController: UIViewController {
             //Stop Rounds after 6 throws
             throwsAreCompleted()
         }
-    }
-    
-    private func saveUserAndComputerThrows(_ userThrow: Int, _ computerThrow: Int) {
-        handCricketManager.saveUserThrows(userThrow)
-        handCricketManager.saveComputerThrows(computerThrow)
-        printLogs(userThrow, computerThrow)
     }
     
     private func throwsAreCompleted() {
@@ -126,7 +123,7 @@ class ScoreBoardViewController: UIViewController {
         handCricketManager.resetUserThrows()
         handCricketManager.resetComputerThrows()
         
-        //Reset throwsCount
+        //Reset throws Count
         throwsCount = 0
         
         setupScoreBoardUI()
@@ -136,6 +133,7 @@ class ScoreBoardViewController: UIViewController {
         print("Round 2: Computer is Batting")
         
     }
+    
     
     private func roundTwoCompleted(status: ComputerThrowsResult) {
         switch status {

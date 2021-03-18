@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  HandCricket
+
+  Created by Lokesh on 18/03/21.
+  
+*/
+
+USER_THROWING = "User Throws (Round 1)";
+COMPUTER_THROWING = "Computer Throws (Round 2)";
+USER_WON = "User Won the Hand Cricket";
+COMPUTER_WON = "Computer won the Hand Cricket";
+MATCH_TIE = "Hand Cricket between User vs Computer is Tie";

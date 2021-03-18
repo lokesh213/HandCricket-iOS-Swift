@@ -11,5 +11,4 @@ struct HandCricketModel {
     var userThrowsArr: [Int]
     var computerThrowsArr: [Int]
     var target: Int
-    
 }

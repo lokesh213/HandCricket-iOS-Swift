@@ -16,12 +16,12 @@ class ResultViewController: UIViewController {
         super.viewDidLoad()
         resultLbl.text = result ?? "Something went wrong. Please try again later!"
         resultLbl.adjustsFontSizeToFitWidth = true
-
+        
     }
     
     @IBAction func performPlayAgain(_ sender: Any) {
-        guard let tossVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "TossViewControllerID") as? TossViewController else { return }
-        self.view.window?.rootViewController = tossVC
+        guard let scoreboardVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "ScoreBoardViewControllerID") as? ScoreBoardViewController else { return }
+        self.view.window?.rootViewController = scoreboardVC
     }
     
 }

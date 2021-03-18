@@ -21,7 +21,7 @@ struct HandCricketManager {
     
     mutating func saveUserThrows(_ number: Int) {
         handCricketModel.userThrowsArr.append(number)
-
+        
     }
     
     mutating func saveComputerThrows(_ number: Int) {
@@ -30,7 +30,11 @@ struct HandCricketManager {
     
     mutating func saveUserTarget() {
         let userScore = getUserScore()
-        handCricketModel.target = userScore
+        if userScore == 0 {
+            handCricketModel.target = 1
+        } else {
+            handCricketModel.target = userScore
+        }
     }
     
     func getUserThrowsInCommaSeparated() -> String {
@@ -77,17 +81,40 @@ struct HandCricketManager {
         return handCricketModel.target
     }
     
+    mutating func checkUserOrComputerIsOut(_ userThrow: Int, _ computerThrow: Int) -> Bool {
+        if userThrow == computerThrow {
+            return true
+        } else {
+            //Save User Throw and Computer Throw. When there are not equal to each other
+            self.saveUserThrows(userThrow)
+            self.saveComputerThrows(computerThrow)
+            return false
+        }
+    }
+    
+    func checkComputerWonTheMatch() -> Bool {
+        let target = self.getTarget()
+        let currentComputerScore = self.getComputerScore()
+        if currentComputerScore > target {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func checkHandCricketResult() -> String? {
         let target = getTarget()
         let computerScore = getComputerScore()
         
         if target > computerScore {
-            return "User Won the Hand Cricket"
+            print("Game Winner is User")
+            return localize(key: "USER_WON")
         } else if target < computerScore {
-            return "Computer won the Hand Cricket"
-            
+            print("Game Winner is Computer")
+            return localize(key: "COMPUTER_WON")  
         } else if target == computerScore {
-            return "Hand Cricket between User vs Computer is Tie"
+            print("Game is Tie")
+            return localize(key: "MATCH_TIE")
         }
         return nil
     }
@@ -99,5 +126,5 @@ struct HandCricketManager {
     mutating func resetComputerThrows() {
         handCricketModel.computerThrowsArr.removeAll()
     }
-
+    
 }
